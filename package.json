@@ -1,5 +1,5 @@
 {
-  "name": "react-date-range",
+  "name": "@viralgains/react-date-range",
   "version": "1.0.0-beta",
   "description": "A React component for choosing dates and date ranges.",
   "main": "dist/index.js",
@@ -28,7 +28,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://github.com/Adphorus/react-date-range"
+    "url": "git+ssh://git@github.com/Adphorus/react-date-range.git"
   },
   "bugs": {
     "url": "http://github.com/Adphorus/react-date-range/issues"
@@ -82,5 +82,7 @@
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7",
     "webpack-hot-middleware": "^2.21.0"
-  }
+  },
+  "homepage": "https://github.com/Adphorus/react-date-range#readme",
+  "author": ""
 }
