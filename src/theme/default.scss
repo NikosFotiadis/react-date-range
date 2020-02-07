@@ -614,6 +614,10 @@ li.rc-time-picker-panel-select-option-selected {
   font-weight: bold;
 }
 
+li.rc-time-picker-panel-select-option-selected:focus {
+  outline: none;
+}
+
 li.rc-time-picker-panel-select-option-disabled {
   color: #ccc;
 }
