@@ -132,6 +132,7 @@ dateDisplayFormat(DateRange)         | String    | `MMM D, YYYY`    | selected r
 renderStaticRangeLabel(`DefinedRange`)| Function  |                  | Callback function to be triggered for the static range configurations that have `hasCustomRendering: true` on them. Instead of rendering `staticRange.label`, return value of this callback will be rendered.
 staticRanges(`DefinedRange`, `DateRangePicker`) | Array   | [default preDefined ranges](https://github.com/Adphorus/react-date-range/blob/master/src/defaultRanges.js)             | -
 inputRanges(`DefinedRange`, `DateRangePicker`) | Array   | [default input ranges](https://github.com/Adphorus/react-date-range/blob/master/src/defaultRanges.js)             | -
+showTime                             | Boolean   | false             | Show time-picker along side the selected date range
 
 
  *shape of range:
