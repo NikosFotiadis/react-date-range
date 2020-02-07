@@ -26,13 +26,6 @@
     "Engin Semih Basmacı <semih.basmaci@gmail.com> (https://github.com/mortargrind)"
   ],
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/Adphorus/react-date-range.git"
-  },
-  "bugs": {
-    "url": "http://github.com/Adphorus/react-date-range/issues"
-  },
   "dependencies": {
     "classnames": "^2.2.1",
     "date-fns": "2.0.0-alpha.7",
