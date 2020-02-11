@@ -161,10 +161,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
-  bottom: 0;
-  top: 5px;
-  bottom: 5px;
+  top: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -443,6 +440,7 @@
 
 .rdrTimePickerContainerActive {
   border-color: initial;
+  z-index: 3;
 }
 
 .rc-time-picker {

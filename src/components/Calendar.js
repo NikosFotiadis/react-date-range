@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import ReactList from 'react-list';
 import { FaClock } from 'react-icons/fa';
 import TimePicker from 'rc-time-picker';
+import 'rc-time-picker/assets/index.css';
 
 import {
   addMonths,
