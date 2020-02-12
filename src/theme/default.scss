@@ -427,7 +427,7 @@
   flex: 1;
   font-size: 13.5px;
   margin-right: 0.5em;
-  margin-top: 2px;
+  margin-top: 3px;
   color: black;
 }
 
@@ -509,7 +509,7 @@
 }
 
 .rc-time-picker-panel {
-  z-index: 1070;
+  z-index: 2100;
   width: 170px;
   position: absolute;
   box-sizing: border-box;
