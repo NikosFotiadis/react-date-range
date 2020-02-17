@@ -16,7 +16,7 @@
   border-radius: 4px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 1px 2px 0 rgba(35, 57, 66, 0.21);
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   display: flex;
 
   input {
@@ -25,7 +25,7 @@
     line-height: 2.5em;
     border: 0px;
     background: transparent;
-    width: 100%;
+    width: 80%;
     color: #849095;
   }
 }
@@ -161,7 +161,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 3px;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -195,7 +195,6 @@
   .rdrInRange, .rdrStartEdge, .rdrEndEdge, .rdrSelected {
     & ~ .rdrDayNumber {
       span {
-        color: rgba(255, 255, 255, 0.85);
       }
     }
   }
@@ -228,6 +227,19 @@
   border-top-right-radius: 1.042em;
   border-bottom-right-radius: 1.042em;
   right: 2px;
+}
+
+.rdrStartEdge:after, .rdrEndEdge:after {
+  background: #61d1d2;
+  content: '';
+  display: inline-block;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  border-radius: 1.042em;
+  bottom: 0;
+  top: 0;
 }
 
 .rdrSelected {

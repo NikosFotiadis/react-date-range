@@ -5,7 +5,6 @@ import Month from './Month.js';
 import { calcFocusDate, generateStyles, getMonthDisplayRange } from '../utils';
 import classnames from 'classnames';
 import ReactList from 'react-list';
-import { FaClock } from 'react-icons/fa';
 import TimePicker from 'rc-time-picker';
 import 'rc-time-picker/assets/index.css';
 
@@ -295,10 +294,8 @@ class Calendar extends PureComponent {
                         return <React.Fragment />;
                       }}
                       value={moment(range.startDate)}
+                      use12Hours={true}
                     />
-                    <span className={styles.timePickerIcon}>
-                      <FaClock />
-                    </span>
                   </span>
                 ) : (
                   <React.Fragment />
@@ -326,10 +323,8 @@ class Calendar extends PureComponent {
                         updateRange && updateRange({ ...range, endDate: value.toDate() });
                       }}
                       value={moment(range.endDate)}
+                      use12Hours={true}
                     />
-                    <span className={styles.timePickerIcon}>
-                      <FaClock />
-                    </span>
                   </span>
                 ) : (
                   <React.Fragment />
@@ -421,6 +416,7 @@ class Calendar extends PureComponent {
       maxDate,
       minDate,
       rangeColors,
+      rangeEdgeColors,
       color,
     } = this.props;
     const { scrollArea, focusedDate } = this.state;
@@ -430,6 +426,7 @@ class Calendar extends PureComponent {
     const ranges = this.props.ranges.map((range, i) => ({
       ...range,
       color: range.color || rangeColors[i] || color,
+      edgeColor: range.edgeColor || rangeEdgeColors[i] || color,
     }));
     return (
       <div
@@ -549,14 +546,15 @@ Calendar.defaultProps = {
   showPreview: true,
   displayMode: 'date',
   months: 1,
-  color: '#3d91ff',
+  color: '#1dbbbc',
   scroll: {
     enabled: false,
   },
   direction: 'vertical',
   maxDate: addYears(new Date(), 20),
   minDate: addYears(new Date(), -100),
-  rangeColors: ['#3d91ff', '#3ecf8e', '#fed14c'],
+  rangeColors: ['#1dbbbc', '#3ecf8e', '#fed14c'],
+  rangeEdgeColors: ['#1dbbbc', '#3ecf8e', '#fed14c'],
   dragSelectionEnabled: true,
 };
 
@@ -602,6 +600,7 @@ Calendar.propTypes = {
   direction: PropTypes.oneOf(['vertical', 'horizontal']),
   navigatorRenderer: PropTypes.func,
   rangeColors: PropTypes.arrayOf(PropTypes.string),
+  rangeEdgeColors: PropTypes.arrayOf(PropTypes.string),
   dragSelectionEnabled: PropTypes.bool,
 };
 

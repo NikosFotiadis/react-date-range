@@ -199,6 +199,8 @@ export default class Main extends Component {
               ranges={[this.state.dateRangePicker.selection]}
               direction="horizontal"
               showTime={true}
+              rangeColors={['#9be2e4']}
+              color={'#9be2e4'}
             />
           </div>
         </Section>

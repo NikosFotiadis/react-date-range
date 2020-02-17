@@ -1,6 +1,6 @@
 {
   "name": "@viralgains/react-date-range",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A React component for choosing dates and date ranges.",
   "main": "dist/index.js",
   "scripts": {
