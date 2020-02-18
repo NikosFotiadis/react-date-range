@@ -9,7 +9,7 @@ import {
   endOfWeek,
   isSameDay,
   differenceInCalendarDays,
-} from 'date-fns';
+} from './dateUtils';
 
 const defineds = {
   startOfWeek: startOfWeek(new Date()),

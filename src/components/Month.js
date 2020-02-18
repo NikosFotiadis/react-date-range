@@ -3,19 +3,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DayCell, { rangeShape } from './DayCell.js';
 
+import { isWeekend, isWithinInterval, eachDayOfInterval } from 'date-fns';
+
 import {
   format,
-  startOfDay,
-  endOfDay,
   startOfWeek,
   endOfWeek,
-  isBefore,
   isSameDay,
+  startOfDay,
+  endOfDay,
+  isBefore,
   isAfter,
-  isWeekend,
-  isWithinInterval,
-  eachDayOfInterval,
-} from 'date-fns';
+} from '../dateUtils';
+
 import { getMonthDisplayRange } from '../utils';
 
 function renderWeekdays(styles, dateOptions) {

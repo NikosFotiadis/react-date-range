@@ -33,15 +33,15 @@ export const areIntervalsOverlapping = (interval1, interval2) => {
   );
 };
 
-export const startOfMonth = date => {
+export const startOfDay = date => {
   return moment(date)
-    .startOf('month')
+    .startOf('day')
     .toDate();
 };
 
-export const endOfMonth = date => {
+export const endOfDay = date => {
   return moment(date)
-    .endOf('month')
+    .endOf('day')
     .toDate();
 };
 
@@ -54,6 +54,18 @@ export const startOfWeek = date => {
 export const endOfWeek = date => {
   return moment(date)
     .endOf('week')
+    .toDate();
+};
+
+export const startOfMonth = date => {
+  return moment(date)
+    .startOf('month')
+    .toDate();
+};
+
+export const endOfMonth = date => {
+  return moment(date)
+    .endOf('month')
     .toDate();
 };
 
@@ -93,10 +105,6 @@ export const differenceInDays = (...args) => {
   return differenceInCalendarDays(...args);
 };
 
-export const format = (...args) => {
-  return moment.format(...args);
-};
-
 export const min = array => {
   let min = Infinity;
   for (const date of array) {
@@ -117,4 +125,28 @@ export const max = array => {
   }
 
   return max;
+};
+
+export const format = (date, format) => {
+  return moment(date).format(format);
+};
+
+export const setMonth = (date, value) => {
+  return moment(date)
+    .month(value)
+    .toDate();
+};
+
+export const setYear = (date, value) => {
+  return moment(date)
+    .year(value)
+    .toDate();
+};
+
+export const isBefore = (date1, date2) => {
+  return date1 < date2;
+};
+
+export const isAfter = (date1, date2) => {
+  return date1 > date2;
 };
