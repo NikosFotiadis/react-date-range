@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DayCell, { rangeShape } from './DayCell.js';
 
-import { isWithinInterval } from 'date-fns';
-
 import {
   format,
   startOfWeek,
@@ -16,20 +14,21 @@ import {
   isAfter,
   isWeekend,
   eachDayOfInterval,
+  isWithinInterval,
 } from '../dateUtils';
 
 import { getMonthDisplayRange } from '../utils';
 
-function renderWeekdays(styles, dateOptions) {
+function renderWeekdays(styles) {
   const now = new Date();
   return (
     <div className={styles.weekDays}>
       {eachDayOfInterval({
-        start: startOfWeek(now, dateOptions),
-        end: endOfWeek(now, dateOptions),
+        start: startOfWeek(now),
+        end: endOfWeek(now),
       }).map((day, i) => (
         <span className={styles.weekDay} key={i}>
-          {format(day, 'ddd', dateOptions)}
+          {format(day, 'ddd')}
         </span>
       ))}
     </div>
@@ -42,7 +41,7 @@ class Month extends Component {
     const { displayMode, focusedRange, drag, styles, disabledDates } = this.props;
     const minDate = this.props.minDate && startOfDay(this.props.minDate);
     const maxDate = this.props.maxDate && endOfDay(this.props.maxDate);
-    const monthDisplay = getMonthDisplayRange(this.props.month, this.props.dateOptions);
+    const monthDisplay = getMonthDisplayRange(this.props.month);
     let ranges = this.props.ranges;
     if (displayMode === 'dateRange' && drag.status) {
       let { startDate, endDate } = drag.range;
@@ -62,11 +61,11 @@ class Month extends Component {
         {this.props.showMonthName ? (
           <div className={styles.monthName}>
             <span className={styles.monthSpanName}>
-              {format(this.props.month, this.props.monthDisplayFormat, this.props.dateOptions)}
+              {format(this.props.month, this.props.monthDisplayFormat)}
             </span>
           </div>
         ) : null}
-        {this.props.showWeekDays && renderWeekdays(styles, this.props.dateOptions)}
+        {this.props.showWeekDays && renderWeekdays(styles)}
         <div className={styles.days} onMouseLeave={this.props.onMouseLeave}>
           {eachDayOfInterval({ start: monthDisplay.start, end: monthDisplay.end }).map(
             (day, index) => {
@@ -83,10 +82,10 @@ class Month extends Component {
                   ranges={ranges}
                   day={day}
                   preview={showPreview ? this.props.preview : null}
-                  isWeekend={isWeekend(day, this.props.dateOptions)}
+                  isWeekend={isWeekend(day)}
                   isToday={isSameDay(day, now)}
-                  isStartOfWeek={isSameDay(day, startOfWeek(day, this.props.dateOptions))}
-                  isEndOfWeek={isSameDay(day, endOfWeek(day, this.props.dateOptions))}
+                  isStartOfWeek={isSameDay(day, startOfWeek(day))}
+                  isEndOfWeek={isSameDay(day, endOfWeek(day))}
                   isStartOfMonth={isStartOfMonth}
                   isEndOfMonth={isEndOfMonth}
                   key={index}
@@ -120,7 +119,6 @@ Month.propTypes = {
   styles: PropTypes.object,
   month: PropTypes.object,
   drag: PropTypes.object,
-  dateOptions: PropTypes.object,
   disabledDates: PropTypes.array,
   preview: PropTypes.shape({
     startDate: PropTypes.object,

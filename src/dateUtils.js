@@ -222,3 +222,7 @@ export const eachDayOfInterval = range => {
 
   return days;
 };
+
+export const isWithinInterval = (date, range) => {
+  return range.start <= date && date <= range.end;
+};

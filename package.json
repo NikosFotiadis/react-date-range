@@ -28,8 +28,6 @@
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.1",
-    "date-fns": "2.0.0-alpha.7",
-    "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
     "prop-types": "^15.5.10",
     "rc-time-picker": "^3.7.3",

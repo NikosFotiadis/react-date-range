@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import Calendar from './Calendar.js';
 import { rangeShape } from './DayCell';
 import { findNextRangeIndex, generateStyles } from '../utils.js';
-import { isWithinInterval } from 'date-fns';
 import {
   addDays,
   differenceInCalendarDays,
   max,
   min,
   isBefore,
+  isWithinInterval,
   timezoneManager,
 } from '../dateUtils';
 import classnames from 'classnames';
@@ -19,6 +19,7 @@ import moment from 'moment-timezone';
 class DateRange extends Component {
   constructor(props, context) {
     super(props, context);
+    timezoneManager.setTimezone(props.timezone);
     this.setSelection = this.setSelection.bind(this);
     this.handleRangeFocusChange = this.handleRangeFocusChange.bind(this);
     this.updatePreview = this.updatePreview.bind(this);
@@ -28,10 +29,6 @@ class DateRange extends Component {
       preview: null,
     };
     this.styles = generateStyles([coreStyles, props.classNames]);
-  }
-
-  componentDidMount() {
-    timezoneManager.setTimezone(this.props.timezone);
   }
 
   componentDidUpdate(prevProps) {
