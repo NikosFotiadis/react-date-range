@@ -3,10 +3,18 @@ import PropTypes from 'prop-types';
 import Calendar from './Calendar.js';
 import { rangeShape } from './DayCell';
 import { findNextRangeIndex, generateStyles } from '../utils.js';
-import { isBefore, isWithinInterval } from 'date-fns';
-import { addDays, differenceInCalendarDays, max, min } from '../dateUtils';
+import { isWithinInterval } from 'date-fns';
+import {
+  addDays,
+  differenceInCalendarDays,
+  max,
+  min,
+  isBefore,
+  timezoneManager,
+} from '../dateUtils';
 import classnames from 'classnames';
 import coreStyles from '../styles';
+import moment from 'moment-timezone';
 
 class DateRange extends Component {
   constructor(props, context) {
@@ -20,6 +28,16 @@ class DateRange extends Component {
       preview: null,
     };
     this.styles = generateStyles([coreStyles, props.classNames]);
+  }
+
+  componentDidMount() {
+    timezoneManager.setTimezone(this.props.timezone);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.timezone !== this.props.timezone) {
+      timezoneManager.setTimezone(this.props.timezone);
+    }
   }
 
   calcNewSelection(value, isSingleValue = true) {
@@ -143,6 +161,7 @@ DateRange.defaultProps = {
   moveRangeOnFirstSelection: false,
   rangeColors: ['#3d91ff', '#3ecf8e', '#fed14c'],
   disabledDates: [],
+  timezone: moment.tz.guess(),
 };
 
 DateRange.propTypes = {
@@ -152,6 +171,7 @@ DateRange.propTypes = {
   className: PropTypes.string,
   ranges: PropTypes.arrayOf(rangeShape),
   moveRangeOnFirstSelection: PropTypes.bool,
+  timezone: PropTypes.string,
 };
 
 export default DateRange;

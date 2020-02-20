@@ -94,6 +94,7 @@ import '../styles/main.css';
 
 import '../../../src/styles.scss';
 import '../../../src/theme/default.scss';
+import moment from "moment";
 
 function formatDateDisplay(date, defaultText) {
   if (!date) return defaultText;
@@ -176,6 +177,10 @@ export default class Main extends Component {
   }
 
   handleRangeChange(which, payload) {
+    const { selection: { startDate, endDate } } = payload;
+    const currentStartDate = moment(startDate);
+    const currentEndDate = moment(endDate);
+    console.log(currentStartDate.toDate(), currentEndDate.toDate());
     this.setState({
       [which]: {
         ...this.state[which],
@@ -201,6 +206,7 @@ export default class Main extends Component {
               showTime={true}
               rangeColors={['#9be2e4']}
               color={'#9be2e4'}
+              timezone={'America/New_York'}
             />
           </div>
         </Section>

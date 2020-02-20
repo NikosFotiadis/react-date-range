@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DayCell, { rangeShape } from './DayCell.js';
 
-import { isWeekend, isWithinInterval, eachDayOfInterval } from 'date-fns';
+import { isWithinInterval } from 'date-fns';
 
 import {
   format,
@@ -14,6 +14,8 @@ import {
   endOfDay,
   isBefore,
   isAfter,
+  isWeekend,
+  eachDayOfInterval,
 } from '../dateUtils';
 
 import { getMonthDisplayRange } from '../utils';

@@ -8,8 +8,6 @@ import ReactList from 'react-list';
 import TimePicker from 'rc-time-picker';
 import 'rc-time-picker/assets/index.css';
 
-import { eachDayOfInterval } from 'date-fns';
-
 import {
   addMonths,
   startOfWeek,
@@ -27,11 +25,12 @@ import {
   format,
   setYear,
   setMonth,
+  eachDayOfInterval,
 } from '../dateUtils';
 
 import defaultLocale from 'date-fns/locale/en-US';
 import coreStyles from '../styles';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 class Calendar extends PureComponent {
   constructor(props, context) {
@@ -257,7 +256,15 @@ class Calendar extends PureComponent {
   }
 
   renderDateDisplay() {
-    const { focusedRange, color, ranges, rangeColors, updateRange, showTime } = this.props;
+    const {
+      focusedRange,
+      color,
+      ranges,
+      rangeColors,
+      updateRange,
+      showTime,
+      timezone,
+    } = this.props;
     const defaultColor = rangeColors[focusedRange[0]] || color;
     const styles = this.styles;
     return (
@@ -295,7 +302,7 @@ class Calendar extends PureComponent {
                       clearIcon={() => {
                         return <React.Fragment />;
                       }}
-                      value={moment(range.startDate)}
+                      value={moment(range.startDate).tz(timezone)}
                       use12Hours={true}
                     />
                   </span>
@@ -324,7 +331,7 @@ class Calendar extends PureComponent {
                       onChange={value => {
                         updateRange && updateRange({ ...range, endDate: value.toDate() });
                       }}
-                      value={moment(range.endDate)}
+                      value={moment(range.endDate).tz(timezone)}
                       use12Hours={true}
                     />
                   </span>
