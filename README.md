@@ -125,6 +125,7 @@ renderStaticRangeLabel(`DefinedRange`)| Function  |                  | Callback 
 staticRanges(`DefinedRange`, `DateRangePicker`) | Array   | [default preDefined ranges](https://github.com/Adphorus/react-date-range/blob/master/src/defaultRanges.js)             | -
 inputRanges(`DefinedRange`, `DateRangePicker`) | Array   | [default input ranges](https://github.com/Adphorus/react-date-range/blob/master/src/defaultRanges.js)             | -
 showTime                             | Boolean   | false             | Show time-picker along side the selected date range
+timezone                             | String   | {System Timezone}             | Set timezone in DateRange
 
 
  *shape of range:

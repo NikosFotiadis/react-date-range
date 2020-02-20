@@ -69,6 +69,7 @@ export const endOfDay = date => {
 
 export const startOfWeek = date => {
   return moment(date)
+    .tz(timezoneManager.getTimezone())
     .startOf('week')
     .toDate();
 };
@@ -97,49 +98,49 @@ export const endOfMonth = date => {
 export const isSameDay = (date1, date2) => {
   return moment(date1)
     .tz(timezoneManager.getTimezone())
-    .isSame(moment(date2), 'day');
+    .isSame(moment(date2).tz(timezoneManager.getTimezone()), 'day');
 };
 
 export const isSameWeek = (date1, date2) => {
   return moment(date1)
     .tz(timezoneManager.getTimezone())
-    .isSame(moment(date2), 'week');
+    .isSame(moment(date2).tz(timezoneManager.getTimezone()), 'week');
 };
 
 export const isSameMonth = (date1, date2) => {
   return moment(date1)
     .tz(timezoneManager.getTimezone())
-    .isSame(moment(date2), 'month');
+    .isSame(moment(date2).tz(timezoneManager.getTimezone()), 'month');
 };
 
 export const isSameYear = (date1, date2) => {
   return moment(date1)
     .tz(timezoneManager.getTimezone())
-    .isSame(moment(date2), 'year');
+    .isSame(moment(date2).tz(timezoneManager.getTimezone()), 'year');
 };
 
 export const differenceInCalendarDays = (date1, date2) => {
   return moment(date1)
     .tz(timezoneManager.getTimezone())
-    .isSame(moment(date2), 'day');
+    .isSame(moment(date2).tz(timezoneManager.getTimezone()), 'day');
 };
 
 export const differenceInCalendarWeeks = (date1, date2) => {
   return moment(date1)
     .tz(timezoneManager.getTimezone())
-    .isSame(moment(date2), 'week');
+    .isSame(moment(date2).tz(timezoneManager.getTimezone()), 'week');
 };
 
 export const differenceInCalendarMonths = (date1, date2) => {
   return moment(date1)
     .tz(timezoneManager.getTimezone())
-    .isSame(moment(date2), 'month');
+    .isSame(moment(date2).tz(timezoneManager.getTimezone()), 'month');
 };
 
 export const differenceInCalendarYears = (date1, date2) => {
   return moment(date1)
     .tz(timezoneManager.getTimezone())
-    .isSame(moment(date2), 'year');
+    .isSame(moment(date2).tz(timezoneManager.getTimezone()), 'year');
 };
 
 export const differenceInDays = (...args) => {
@@ -211,7 +212,7 @@ export const eachDayOfInterval = range => {
   const endDate = moment(range.end)
     .tz(timezoneManager.getTimezone())
     .startOf('day');
-  while (startDate < endDate) {
+  while (startDate <= endDate) {
     days.push(
       moment(startDate)
         .tz(timezoneManager.getTimezone())

@@ -1,6 +1,6 @@
 {
   "name": "@viralgains/react-date-range",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A React component for choosing dates and date ranges.",
   "main": "dist/index.js",
   "scripts": {
@@ -23,7 +23,8 @@
   "contributors": [
     "Burak Can <neoberg@gmail.com> (https://github.com/burakcan)",
     "Mehmet Kamil Morcay <mehmetmorcay@gmail.com> (https://github.com/mkg0)",
-    "Engin Semih Basmacı <semih.basmaci@gmail.com> (https://github.com/mortargrind)"
+    "Engin Semih Basmacı <semih.basmaci@gmail.com> (https://github.com/mortargrind)",
+    "Danish Kamal <danish5095@gmail.com> (https://github.com/danish1994)"
   ],
   "license": "MIT",
   "dependencies": {
