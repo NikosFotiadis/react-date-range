@@ -211,7 +211,7 @@ export const eachDayOfInterval = range => {
   const endDate = moment(range.end)
     .tz(timezoneManager.getTimezone())
     .startOf('day');
-  while (startDate <= endDate) {
+  while (startDate < endDate) {
     days.push(
       moment(startDate)
         .tz(timezoneManager.getTimezone())

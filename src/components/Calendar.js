@@ -189,7 +189,7 @@ class Calendar extends PureComponent {
   }
 
   renderMonthAndYear(focusedDate, changeShownDate, props) {
-    const { showMonthArrow, locale, minDate, maxDate, showMonthAndYearPickers } = props;
+    const { showMonthArrow, minDate, maxDate, showMonthAndYearPickers } = props;
     const upperYearLimit = (maxDate || Calendar.defaultProps.maxDate).getFullYear();
     const lowerYearLimit = (minDate || Calendar.defaultProps.minDate).getFullYear();
     const styles = this.styles;
