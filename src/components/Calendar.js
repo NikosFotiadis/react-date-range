@@ -158,9 +158,6 @@ class Calendar extends PureComponent {
   }
 
   changeShownDate(value, mode = 'set') {
-    console.log(': -------------------------------------------');
-    console.log('Calendar -> changeShownDate -> value', value);
-    console.log(': -------------------------------------------');
     const { focusedDate } = this.state;
     const { onShownDateChange, minDate, maxDate } = this.props;
     const modeMapper = {
@@ -192,7 +189,7 @@ class Calendar extends PureComponent {
   }
 
   renderMonthAndYear(focusedDate, changeShownDate, props) {
-    const { showMonthArrow, minDate, maxDate, showMonthAndYearPickers, timezone } = props;
+    const { showMonthArrow, minDate, maxDate, showMonthAndYearPickers, onChange, date } = props;
     const upperYearLimit = (maxDate || Calendar.defaultProps.maxDate).getFullYear();
     const lowerYearLimit = (minDate || Calendar.defaultProps.minDate).getFullYear();
     const styles = this.styles;
@@ -240,8 +237,8 @@ class Calendar extends PureComponent {
               <TimePicker
                 allowEmpty={false}
                 showSecond={false}
-                onChange={value => changeShownDate(value.toDate())}
-                value={moment(focusedDate)}
+                onChange={value => onChange(value.toDate())}
+                value={moment(date)}
               />
             </span>
           </span>

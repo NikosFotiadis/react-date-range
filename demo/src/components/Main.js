@@ -15,13 +15,6 @@ export default class Main extends Component {
     super(props, context);
 
     this.state = {
-      dateRangePicker: {
-        selection: {
-          startDate: new Date(),
-          endDate: new Date(),
-          key: 'selection',
-        },
-      },
       date: new Date(),
     };
   }
@@ -36,7 +29,7 @@ export default class Main extends Component {
     console.log(': ---------------------------------------');
     console.log('Main -> handleRangeChange -> date', date);
     console.log(': ---------------------------------------');
-    this.setState(date);
+    this.setState({ date });
   }
 
   render() {
@@ -46,7 +39,7 @@ export default class Main extends Component {
           <div />
           <div>
             <Calendar
-              onChange={this.handleRangeChange}
+              onChange={this.handleRangeChange.bind(this)}
               showSelectionPreview={true}
               moveRangeOnFirstSelection={false}
               className={'PreviewArea'}

@@ -198,10 +198,6 @@ var Calendar = function (_PureComponent) {
     key: 'changeShownDate',
     value: function changeShownDate(value) {
       var mode = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'set';
-
-      console.log(': -------------------------------------------');
-      console.log('Calendar -> changeShownDate -> value', value);
-      console.log(': -------------------------------------------');
       var focusedDate = this.state.focusedDate;
       var _props = this.props,
           onShownDateChange = _props.onShownDateChange,
@@ -255,7 +251,8 @@ var Calendar = function (_PureComponent) {
           minDate = props.minDate,
           maxDate = props.maxDate,
           showMonthAndYearPickers = props.showMonthAndYearPickers,
-          timezone = props.timezone;
+          _onChange = props.onChange,
+          date = props.date;
 
       var upperYearLimit = (maxDate || Calendar.defaultProps.maxDate).getFullYear();
       var lowerYearLimit = (minDate || Calendar.defaultProps.minDate).getFullYear();
@@ -325,9 +322,9 @@ var Calendar = function (_PureComponent) {
               allowEmpty: false,
               showSecond: false,
               onChange: function onChange(value) {
-                return changeShownDate(value.toDate());
+                return _onChange(value.toDate());
               },
-              value: (0, _momentTimezone2.default)(focusedDate)
+              value: (0, _momentTimezone2.default)(date)
             })
           )
         ) : _react2.default.createElement(
