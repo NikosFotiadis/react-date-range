@@ -158,6 +158,9 @@ class Calendar extends PureComponent {
   }
 
   changeShownDate(value, mode = 'set') {
+    console.log(': -------------------------------------------');
+    console.log('Calendar -> changeShownDate -> value', value);
+    console.log(': -------------------------------------------');
     const { focusedDate } = this.state;
     const { onShownDateChange, minDate, maxDate } = this.props;
     const modeMapper = {
@@ -237,7 +240,7 @@ class Calendar extends PureComponent {
               <TimePicker
                 allowEmpty={false}
                 showSecond={false}
-                onChange={e => changeShownDate(e.target.value, 'setMonth')}
+                onChange={value => changeShownDate(value.toDate())}
                 value={moment(focusedDate).tz(timezone)}
               />
             </span>

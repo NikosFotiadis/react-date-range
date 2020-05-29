@@ -198,6 +198,10 @@ var Calendar = function (_PureComponent) {
     key: 'changeShownDate',
     value: function changeShownDate(value) {
       var mode = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'set';
+
+      console.log(': -------------------------------------------');
+      console.log('Calendar -> changeShownDate -> value', value);
+      console.log(': -------------------------------------------');
       var focusedDate = this.state.focusedDate;
       var _props = this.props,
           onShownDateChange = _props.onShownDateChange,
@@ -320,8 +324,8 @@ var Calendar = function (_PureComponent) {
             _react2.default.createElement(_rcTimePicker2.default, {
               allowEmpty: false,
               showSecond: false,
-              onChange: function onChange(e) {
-                return changeShownDate(e.target.value, 'setMonth');
+              onChange: function onChange(value) {
+                return changeShownDate(value.toDate());
               },
               value: (0, _momentTimezone2.default)(focusedDate).tz(timezone)
             })
