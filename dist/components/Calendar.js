@@ -327,7 +327,7 @@ var Calendar = function (_PureComponent) {
               onChange: function onChange(value) {
                 return changeShownDate(value.toDate());
               },
-              value: (0, _momentTimezone2.default)(focusedDate).tz(timezone)
+              value: (0, _momentTimezone2.default)(focusedDate)
             })
           )
         ) : _react2.default.createElement(

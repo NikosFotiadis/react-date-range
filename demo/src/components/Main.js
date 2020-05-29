@@ -22,6 +22,7 @@ export default class Main extends Component {
           key: 'selection',
         },
       },
+      date: new Date(),
     };
   }
 
@@ -35,6 +36,7 @@ export default class Main extends Component {
     console.log(': ---------------------------------------');
     console.log('Main -> handleRangeChange -> date', date);
     console.log(': ---------------------------------------');
+    this.setState(date);
   }
 
   render() {
@@ -53,6 +55,7 @@ export default class Main extends Component {
               rangeColors={['#9be2e4']}
               color={'#9be2e4'}
               timezone={'America/New_York'}
+              date={this.state.date}
             />
           </div>
         </Section>

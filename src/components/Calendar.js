@@ -241,7 +241,7 @@ class Calendar extends PureComponent {
                 allowEmpty={false}
                 showSecond={false}
                 onChange={value => changeShownDate(value.toDate())}
-                value={moment(focusedDate).tz(timezone)}
+                value={moment(focusedDate)}
               />
             </span>
           </span>
