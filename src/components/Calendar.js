@@ -189,7 +189,7 @@ class Calendar extends PureComponent {
   }
 
   renderMonthAndYear(focusedDate, changeShownDate, props) {
-    const { showMonthArrow, minDate, maxDate, showMonthAndYearPickers } = props;
+    const { showMonthArrow, minDate, maxDate, showMonthAndYearPickers, timezone } = props;
     const upperYearLimit = (maxDate || Calendar.defaultProps.maxDate).getFullYear();
     const lowerYearLimit = (minDate || Calendar.defaultProps.minDate).getFullYear();
     const styles = this.styles;
@@ -232,6 +232,14 @@ class Calendar extends PureComponent {
                     );
                   })}
               </select>
+            </span>
+            <span>
+              <TimePicker
+                allowEmpty={false}
+                showSecond={false}
+                onChange={e => changeShownDate(e.target.value, 'setMonth')}
+                value={moment(focusedDate).tz(timezone)}
+              />
             </span>
           </span>
         ) : (
@@ -380,7 +388,7 @@ class Calendar extends PureComponent {
     if (!dragSelectionEnabled) return;
 
     if (displayMode === 'date' || !this.state.drag.status) {
-      onChange && onChange(date);
+      onChange && onChange(date.toDate());
       return;
     }
     const newRange = {

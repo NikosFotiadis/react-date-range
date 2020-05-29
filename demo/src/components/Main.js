@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DateRange } from '../../../src';
+import { Calendar } from '../../../src';
 import Section from './Section';
 
 import 'normalize.css';
@@ -31,17 +31,10 @@ export default class Main extends Component {
     });
   }
 
-  handleRangeChange(which, payload) {
-    const { selection: { startDate, endDate } } = payload;
-    const currentStartDate = moment(startDate);
-    const currentEndDate = moment(endDate);
-    console.log(currentStartDate.toDate(), currentEndDate.toDate());
-    this.setState({
-      [which]: {
-        ...this.state[which],
-        ...payload,
-      },
-    });
+  handleRangeChange(date) {
+    console.log(': ---------------------------------------');
+    console.log('Main -> handleRangeChange -> date', date);
+    console.log(': ---------------------------------------');
   }
 
   render() {
@@ -50,13 +43,11 @@ export default class Main extends Component {
         <Section>
           <div />
           <div>
-            <DateRange
-              onChange={this.handleRangeChange.bind(this, 'dateRangePicker')}
+            <Calendar
+              onChange={this.handleRangeChange}
               showSelectionPreview={true}
               moveRangeOnFirstSelection={false}
               className={'PreviewArea'}
-              months={2}
-              ranges={[this.state.dateRangePicker.selection]}
               direction="horizontal"
               showTime={true}
               rangeColors={['#9be2e4']}

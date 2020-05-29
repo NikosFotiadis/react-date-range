@@ -250,7 +250,8 @@ var Calendar = function (_PureComponent) {
       var showMonthArrow = props.showMonthArrow,
           minDate = props.minDate,
           maxDate = props.maxDate,
-          showMonthAndYearPickers = props.showMonthAndYearPickers;
+          showMonthAndYearPickers = props.showMonthAndYearPickers,
+          timezone = props.timezone;
 
       var upperYearLimit = (maxDate || Calendar.defaultProps.maxDate).getFullYear();
       var lowerYearLimit = (minDate || Calendar.defaultProps.minDate).getFullYear();
@@ -312,6 +313,18 @@ var Calendar = function (_PureComponent) {
                 );
               })
             )
+          ),
+          _react2.default.createElement(
+            'span',
+            null,
+            _react2.default.createElement(_rcTimePicker2.default, {
+              allowEmpty: false,
+              showSecond: false,
+              onChange: function onChange(e) {
+                return changeShownDate(e.target.value, 'setMonth');
+              },
+              value: (0, _momentTimezone2.default)(focusedDate).tz(timezone)
+            })
           )
         ) : _react2.default.createElement(
           'span',
@@ -476,7 +489,7 @@ var Calendar = function (_PureComponent) {
       if (!dragSelectionEnabled) return;
 
       if (displayMode === 'date' || !this.state.drag.status) {
-        onChange && onChange(date);
+        onChange && onChange(date.toDate());
         return;
       }
       var newRange = {
