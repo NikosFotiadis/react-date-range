@@ -189,7 +189,15 @@ class Calendar extends PureComponent {
   }
 
   renderMonthAndYear(focusedDate, changeShownDate, props) {
-    const { showMonthArrow, minDate, maxDate, showMonthAndYearPickers, onChange, date } = props;
+    const {
+      showMonthArrow,
+      minDate,
+      maxDate,
+      showMonthAndYearPickers,
+      onChange,
+      date,
+      showCalendarTime,
+    } = props;
     const upperYearLimit = (maxDate || Calendar.defaultProps.maxDate).getFullYear();
     const lowerYearLimit = (minDate || Calendar.defaultProps.minDate).getFullYear();
     const styles = this.styles;
@@ -233,14 +241,17 @@ class Calendar extends PureComponent {
                   })}
               </select>
             </span>
-            <span>
-              <TimePicker
-                allowEmpty={false}
-                showSecond={false}
-                onChange={value => onChange(value.toDate())}
-                value={moment(date)}
-              />
-            </span>
+            {showCalendarTime ? (
+              <span>
+                <TimePicker
+                  allowEmpty={false}
+                  showSecond={false}
+                  onChange={value => onChange(value.toDate())}
+                  value={moment(date)}
+                  use12Hours={true}
+                />
+              </span>
+            ) : null}
           </span>
         ) : (
           <span className={styles.monthAndYearPickers}>

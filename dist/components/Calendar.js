@@ -252,7 +252,8 @@ var Calendar = function (_PureComponent) {
           maxDate = props.maxDate,
           showMonthAndYearPickers = props.showMonthAndYearPickers,
           _onChange = props.onChange,
-          date = props.date;
+          date = props.date,
+          showCalendarTime = props.showCalendarTime;
 
       var upperYearLimit = (maxDate || Calendar.defaultProps.maxDate).getFullYear();
       var lowerYearLimit = (minDate || Calendar.defaultProps.minDate).getFullYear();
@@ -315,7 +316,7 @@ var Calendar = function (_PureComponent) {
               })
             )
           ),
-          _react2.default.createElement(
+          showCalendarTime ? _react2.default.createElement(
             'span',
             null,
             _react2.default.createElement(_rcTimePicker2.default, {
@@ -324,9 +325,10 @@ var Calendar = function (_PureComponent) {
               onChange: function onChange(value) {
                 return _onChange(value.toDate());
               },
-              value: (0, _momentTimezone2.default)(date)
+              value: (0, _momentTimezone2.default)(date),
+              use12Hours: true
             })
-          )
+          ) : null
         ) : _react2.default.createElement(
           'span',
           { className: styles.monthAndYearPickers },

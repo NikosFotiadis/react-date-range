@@ -147,6 +147,7 @@ class DateRange extends Component {
         ref={target => {
           this.calendar = target;
         }}
+        showCalendarTime={false}
       />
     );
   }

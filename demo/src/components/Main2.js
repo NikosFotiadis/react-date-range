@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DateRange } from '../../../src';
+import { Calendar } from '../../../src';
 import Section from './Section';
 
 import 'normalize.css';
@@ -15,13 +15,7 @@ export default class Main extends Component {
     super(props, context);
 
     this.state = {
-      dateRangePicker: {
-        selection: {
-          startDate: new Date(),
-          endDate: new Date(),
-          key: 'selection',
-        },
-      },
+      date: new Date(),
     };
   }
 
@@ -31,17 +25,8 @@ export default class Main extends Component {
     });
   }
 
-  handleRangeChange(which, payload) {
-    const { selection: { startDate, endDate } } = payload;
-    const currentStartDate = moment(startDate);
-    const currentEndDate = moment(endDate);
-    console.log(currentStartDate.toDate(), currentEndDate.toDate());
-    this.setState({
-      [which]: {
-        ...this.state[which],
-        ...payload,
-      },
-    });
+  handleRangeChange(date) {
+    this.setState({ date });
   }
 
   render() {
@@ -50,18 +35,17 @@ export default class Main extends Component {
         <Section>
           <div />
           <div>
-            <DateRange
-              onChange={this.handleRangeChange.bind(this, 'dateRangePicker')}
+            <Calendar
+              onChange={this.handleRangeChange.bind(this)}
               showSelectionPreview={true}
               moveRangeOnFirstSelection={false}
               className={'PreviewArea'}
-              months={2}
-              ranges={[this.state.dateRangePicker.selection]}
               direction="horizontal"
               showTime={true}
               rangeColors={['#9be2e4']}
               color={'#9be2e4'}
               timezone={'America/New_York'}
+              date={this.state.date}
             />
           </div>
         </Section>

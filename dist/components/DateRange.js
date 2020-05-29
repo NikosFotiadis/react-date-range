@@ -208,7 +208,8 @@ var DateRange = function (_Component) {
         },
         ref: function ref(target) {
           _this2.calendar = target;
-        }
+        },
+        showCalendarTime: false
       }));
     }
   }]);
